@@ -10,3 +10,8 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+resource "azurerm_resource_group" "mydemorg" {
+  name     = "demorg"
+  location = "West Europe"
+}
