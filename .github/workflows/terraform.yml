@@ -31,7 +31,7 @@ jobs:
         client-id: ${{secrets.AZURE_AD_CLIENT_ID}}
         client-secret: ${{secrets.AZURE_AD_CLIENT_SECRET}}
         tenant-id: ${{secrets.AZURE_AD_TENANT_ID}}
-        subscription-id: ${{secrets.AZURE_AD_SUBSCRIPTION_ID}}
+        subscription_id: ${{secrets.AZURE_AD_SUBSCRIPTION_ID}}
 
     - name: Terraform Init
       run: terraform init
@@ -40,8 +40,13 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
-    # - name: Terraform Plan
-    #   run: terraform plan -input=false
+    - name: Terraform Plan
+      env:
+        ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_AD_SUBSCRIPTION_ID}}
+        ARM_CLIENT_ID: ${{secrets.AZURE_AD_CLIENT_ID}}
+        ARM_CLIENT_SECRET: ${{secrets.AZURE_AD_CLIENT_SECRET}}
+        ARM_TENANT_ID: ${{secrets.AZURE_AD_TENANT_ID}}
+      run: terraform plan -input=false
 
      # - name: Terraform Apply
     #   if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
