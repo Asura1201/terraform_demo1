@@ -19,7 +19,7 @@ variable "tenant_id"{
 }
 
 variable "sku_keyvault"{
-  description = "SKU for key vault ("Standard" or "Premium")"
+  description = "SKU for key vault"
   type        = string
   default     = "standard"
 }
