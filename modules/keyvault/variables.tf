@@ -1,27 +1,27 @@
 variable "keyvault_name"{
-  description = "Name of Key Vault"
-  type        = string
+  description  =  "Name of Key Vault"
+  type         =  string
 }
 
-variable "location"{
-  description = "location of key vault"
-  type        = string
+variable "location" {
+  description  =  "location of key vault"
+  type         =  string
 }
 
-variable "resource_group_name"{
-  description = "resource group"
-  type        = string
+variable "resource_group_name" {
+  description  =  "resource group"
+  type         =  string
 }
 
-variable "tenant_id"{
-  description = "tenant id"
-  type        = string
+variable "tenant_id" {
+  description  =  "tenant id"
+  type         =  string
 }
 
-variable "sku_keyvault"{
-  description = "SKU for key vault ("Standard" or "Premium")
-  type        = string
-  default     = "standard"
+variable "sku_keyvault" {
+  description  =  "SKU for key vault ("Standard" or "Premium")
+  type         =  string
+  default      =  "standard"
 }
 
 variable "purge_protection_enabled"{
