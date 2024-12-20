@@ -47,7 +47,11 @@ jobs:
         ARM_CLIENT_ID: ${{secrets.AZURE_AD_CLIENT_ID}}
         ARM_CLIENT_SECRET: ${{secrets.AZURE_AD_CLIENT_SECRET}}
         ARM_TENANT_ID: ${{secrets.AZURE_AD_TENANT_ID}}
-      run: terraform plan -out=tfplan
+      run: |
+          terraform plan -out=tfplan \
+          -var="tenant_id=${{ secrets.AZURE_AD_TENANT_ID}}" \
+          -var="object_id=${{ secrets.AZURE_AD_OBJECT_ID}}"
+          
       
 
      # - name: Terraform Apply
