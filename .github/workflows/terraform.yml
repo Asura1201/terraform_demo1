@@ -27,11 +27,12 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
+        terraform_version: 1.5.5
         # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-        client-id: ${{secrets.AZURE_AD_CLIENT_ID}}
-        client-secret: ${{secrets.AZURE_AD_CLIENT_SECRET}}
-        tenant-id: ${{secrets.AZURE_AD_TENANT_ID}}
-        subscription_id: ${{secrets.AZURE_AD_SUBSCRIPTION_ID}}
+        # client-id: ${{secrets.AZURE_AD_CLIENT_ID}}
+        # client-secret: ${{secrets.AZURE_AD_CLIENT_SECRET}}
+        # tenant-id: ${{secrets.AZURE_AD_TENANT_ID}}
+        # subscription_id: ${{secrets.AZURE_AD_SUBSCRIPTION_ID}}
 
     - name: Terraform Init
       run: terraform init
@@ -46,7 +47,8 @@ jobs:
         ARM_CLIENT_ID: ${{secrets.AZURE_AD_CLIENT_ID}}
         ARM_CLIENT_SECRET: ${{secrets.AZURE_AD_CLIENT_SECRET}}
         ARM_TENANT_ID: ${{secrets.AZURE_AD_TENANT_ID}}
-      run: terraform plan -input=false
+      run: terraform plan -out=tfplan
+      
 
      # - name: Terraform Apply
     #   if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
