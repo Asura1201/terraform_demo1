@@ -16,7 +16,7 @@ resource "azurerm_resource_group" "mydemorg" {
   location =  var.location
 }
 
-module "keyvault" {
+module "keyvault1" {
   source                    =  "./modules/keyvault"
   keyvault_name             =  var.keyvault_name
   location                  =  var.location
