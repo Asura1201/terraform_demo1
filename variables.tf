@@ -6,6 +6,7 @@ variable "keyvault_name"{
 variable "location"{
   description = "location of key vault"
   type        = string
+  default     = "westus"
 }
 
 variable "resource_group_name"{
